@@ -5,6 +5,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { emailSender } from "../utils/emailSender.js";
 
+const REACT_APP_BE_URL = process.env.REACT_APP_BE_URL;
+
 export const loginHandler = async (req, res) => {
   // here we are storing the email and password that we received from front end.
   const { email, password } = req.body;

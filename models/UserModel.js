@@ -71,7 +71,7 @@ userSchema.post("save", async (doc, next) => {
   try {
     //Generating a token that we want to pass in email, to verify a user's email address
     const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
-
+    const REACT_APP_BE_URL = process.env.REACT_APP_BE_URL;
     const payload = {
       email: doc.email,
       firstName: doc.firstName,
