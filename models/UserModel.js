@@ -71,7 +71,7 @@ userSchema.post("save", async (doc, next) => {
   try {
     //Generating a token that we want to pass in email, to verify a user's email address
     const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
-    const REACT_APP_BE_URL = process.env.REACT_APP_BE_URL;
+    const REACT_APP_FE_URL = process.env.REACT_APP_FE_URL;
     const payload = {
       email: doc.email,
       firstName: doc.firstName,
@@ -89,7 +89,7 @@ userSchema.post("save", async (doc, next) => {
                           <br/>
                           <p>Welcome to posts-app. your  account has been created successfully</p>
                           <p>Please click on the below link to confirm your email and activate your account</p>
-                          <a href="${REACT_APP_BE_URL}/confirm-email/${token}">Confirm</a>`;
+                          <a href="${REACT_APP_FE_URL}/confirm-email/${token}">Confirm</a>`;
 
     const emailStatus = await emailSender(
       doc.email,

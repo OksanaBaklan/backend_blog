@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { emailSender } from "../utils/emailSender.js";
 
-const REACT_APP_BE_URL = process.env.REACT_APP_BE_URL;
+const REACT_APP_FE_URL = process.env.REACT_APP_FE_URL;
 
 export const loginHandler = async (req, res) => {
   // here we are storing the email and password that we received from front end.
@@ -136,13 +136,13 @@ export const passwordReset = async (req, res) => {
 
   const subject = "Password Reset";
   const plainText = `  Dear ${currentUser.firstName} ! We have received your request to reset the password. Please follow
-        the link to reset your password ${REACT_APP_BE_URL}/password-reset/${currentUser.email}/${token}`;
+        the link to reset your password ${REACT_APP_FE_URL}/password-reset/${currentUser.email}/${token}`;
 
   const htmlText = `
             <h2>Dear ${currentUser.firstName}!</h2>
             <p>We have received your request to reset the password. Please follow
             the link to reset your password 
-                <a href= "${REACT_APP_BE_URL}/password-reset/${currentUser.email}/${token}">Click Here! </a>
+                <a href= "${REACT_APP_FE_URL}/password-reset/${currentUser.email}/${token}">Click Here! </a>
             </p>`;
 
   const emailSent = await emailSender(
