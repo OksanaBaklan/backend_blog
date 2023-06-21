@@ -89,7 +89,7 @@ userSchema.post("save", async (doc, next) => {
                           <br/>
                           <p>Welcome to posts-app. your  account has been created successfully</p>
                           <p>Please click on the below link to confirm your email and activate your account</p>
-                          <a href="${REACT_APP_FE_URL}/confirm-email/${token}">Confirm</a>`;
+                          <a href="${REACT_APP_FE_URL}/#/confirm-email/${token}">Confirm</a>`;
 
     const emailStatus = await emailSender(
       doc.email,
