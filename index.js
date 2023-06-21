@@ -10,33 +10,29 @@ import authRouter from "./routes/AuthRoutes.js";
 import cloudinary from "cloudinary";
 import multer from "multer";
 import fs from "fs";
-/* import {fileURLToPath} from 'url' */
+import { fileURLToPath } from "url";
 
-import path,{dirname} from 'path'
+import path, { dirname } from "path";
 
-/* const __dirname = dirname(fileURLToPath(import.meta.url))
-const publicFolder = path.join(__dirname, "/images") 
-console.log(publicFolder)
-*/
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const publicFolder = path.join(__dirname, "/images");
+console.log(publicFolder);
 
-const publicFolder = path.resolve()+'/images'
+// const publicFolder = path.resolve() + "/images";
 
 dotenv.config();
-
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(cors());
+app.use(cors("*"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(publicFolder))
-
+app.use(express.static(publicFolder));
 
 app.use("/api/users", userRouter);
 app.use("/api/posts", postRouter);
 app.use("/api/auth", authRouter);
-
 
 app.use((error, req, res, next) => {
   error.statusCode = error.statusCode || 500;
