@@ -33,7 +33,9 @@ app.use(express.static(publicFolder));
 app.use("/api/users", userRouter);
 app.use("/api/posts", postRouter);
 app.use("/api/auth", authRouter);
-
+app.get("/", async (req, res) => {
+  res.send("Reached backend");
+});
 app.use((error, req, res, next) => {
   error.statusCode = error.statusCode || 500;
   error.message = error.message || "Something went wrong";
